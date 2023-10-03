@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { OverlayShadow } from "@/components/common/OverlayShadow";
 import OverlayContent from "./common/OverlayContent";
-import { getNewsAPI } from "@/utils/Api";
+import { BASE_URL } from "@/utils/Api";
 async function getData(Uri: string) {
   const res = await fetch(Uri);
 
@@ -12,9 +12,13 @@ async function getData(Uri: string) {
   return res.json();
 }
 
-const HomeMainlayout = async () => {
+const HomeMainlayout = async ({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) => {
   const data: ApiResponse = await getData(
-    process.env.NEXT_PUBLIC_API_URL_BUSINESS!
+    `${BASE_URL}/top-headlines/category/${searchParams.category}/us.json`
   );
 
   return (

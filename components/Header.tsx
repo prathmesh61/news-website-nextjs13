@@ -2,9 +2,6 @@ import { headerLinks } from "@/utils/Links";
 import Link from "next/link";
 import { Search, UserCircle, Zap } from "lucide-react";
 const Header = () => {
-  // const fullURL = new URL(window.location.href);
-  // fullURL.searchParams.set("category", headerLinks);
-  // router.replace(`/${fullURL.search}`);
   return (
     <div className="bg-red-800 w-full text-white">
       <div className="max-w-[1380px] mx-auto flex items-center   gap-x-8  p-2 ">
@@ -14,7 +11,7 @@ const Header = () => {
         {headerLinks.map((link, index) => (
           <Link
             key={index}
-            href={link.link}
+            href={`?category=${link.name}`}
             className="font-light text-sm hidden lg:block"
           >
             {link.name}
