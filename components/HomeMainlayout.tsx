@@ -17,8 +17,9 @@ const HomeMainlayout = async ({
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
 }) => {
+  const category = searchParams.category || "business";
   const data: ApiResponse = await getData(
-    `${BASE_URL}/top-headlines/category/${searchParams.category}/us.json`
+    `${BASE_URL}/top-headlines/category/${category}/us.json`
   );
 
   return (
